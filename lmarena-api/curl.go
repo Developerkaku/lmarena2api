@@ -93,6 +93,11 @@ func CurlSSE(parentCtx context.Context, url string, options cycletls.Options) (<
 				break ReadLoop
 			default:
 				lineRead, readErr = reader.ReadString('\n')
+
+				//chudu bey
+				logger.Debug(ctx, fmt.Sprintf("ReadString result: line=%q, err=%v", lineRead, readErr)) // Add this  
+
+				
 				if readErr != nil {
 					if readErr == io.EOF {
 						break ReadLoop
