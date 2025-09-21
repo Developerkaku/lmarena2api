@@ -216,7 +216,9 @@ func handleNonStreamRequest(c *gin.Context, client cycletls.CycleTLS, openAIReq 
 				return
 			}
 
+			// logger.Debug(ctx, strings.TrimSpace(data))
 			logger.Debug(ctx, strings.TrimSpace(data))
+			logger.Debug(ctx, fmt.Sprintf("Raw stream data: %q", data)) // Add this line
 
 			streamDelta, streamShouldContinue := processNoStreamData(c, data, modelInfo, thinkStartType, thinkEndType)
 			delta = streamDelta
