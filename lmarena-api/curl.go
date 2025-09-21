@@ -50,6 +50,8 @@ func CurlSSE(parentCtx context.Context, url string, options cycletls.Options) (<
 
 		cmd := exec.CommandContext(ctx, "curl", args...)
 		logger.Debug(ctx, fmt.Sprintf("Executing curl for SSE: curl %s", strings.Join(args, " ")))
+		//chudu bey
+		logger.Debug(ctx, fmt.Sprintf("Curl command started, waiting for output...")) // Add this
 
 		stdout, err := cmd.StdoutPipe()
 		if err != nil {
