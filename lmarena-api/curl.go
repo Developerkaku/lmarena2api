@@ -104,6 +104,9 @@ func CurlSSE(parentCtx context.Context, url string, options cycletls.Options) (<
 				if lineRead == "" {
 					continue
 				}
+
+				logger.Debug(ctx, fmt.Sprintf("Curl raw line: %q", lineRead)) // Add this  
+				
 				sseChan <- cycletls.SSEResponse{Status: 200, Data: lineRead, Done: false}
 			}
 		}
