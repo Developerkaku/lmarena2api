@@ -188,6 +188,15 @@ func handleNonStreamRequest(c *gin.Context, client cycletls.CycleTLS, openAIReq 
 	SSELoop:
 		for response := range sseChan {
 			data := response.Data
+			
+			
+			
+			//chudu bey
+			//new line 
+			logger.Debug(ctx, fmt.Sprintf("SSE Response received: %q", data))
+
+
+			
 			if data == "" {
 				continue
 			}
@@ -696,6 +705,11 @@ func processStreamData(c *gin.Context, data, responseId, model string, modelInfo
 }
 
 func processNoStreamData(c *gin.Context, data string, modelInfo common.ModelInfo, thinkStartType *bool, thinkEndType *bool) (string, bool) {
+
+	//chudu bey
+	logger.Debug(c.Request.Context(), fmt.Sprintf("processNoStreamData called with: %q", data)) // Add this  
+
+	
 	data = strings.TrimSpace(data)
 
 	// Handle [DONE] marker
